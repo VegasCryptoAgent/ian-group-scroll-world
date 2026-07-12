@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next";
+export default function sitemap():MetadataRoute.Sitemap{const paths=["","method","services/operational-leverage","services/growth-leverage","case-studies","case-studies/studio-salon","accelerator","venture-studio","6frame-ai-studio","about","insights","assessment"];return paths.map(path=>({url:`https://www.iangroup.ai/${path}`,lastModified:new Date(),changeFrequency:path==="insights"?"weekly":"monthly",priority:path===""?1:.8}))}
