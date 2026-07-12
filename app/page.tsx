@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { GlobeScene } from "./GlobeScene";
 
 const outcomes = [
   { value: "+25%", label: "revenue in 90 days" },
@@ -40,6 +41,7 @@ export default function Home() {
   return <main className={loaded ? "site loaded" : "site"}>
     <Header />
     <section className="hero">
+      <GlobeScene />
       <div className="hero-grid" aria-hidden="true"/><div className="orb orb-a"/><div className="orb orb-b"/>
       <div className="hero-copy"><p className="eyebrow"><span/> AI execution for companies with traction</p><h1>Turn traction into <em>intelligent scale.</em></h1><p className="lede">IAN redesigns operations, integrates AI, and builds the growth systems that help founder-led companies move faster—without adding complexity or burnout.</p><div className="hero-actions"><Link href="/assessment" className="button primary">Get your scale assessment <Arrow /></Link><Link href="/case-studies" className="text-link">Explore client results <span>↓</span></Link></div></div>
       <div className="system-card" aria-label="IAN multiplier system visualization"><div className="system-head"><span>IAN / MULTIPLIER SYSTEM</span><span className="online"><i/> ONLINE</span></div><div className="system-core"><div className="ring r1"/><div className="ring r2"/><div className="core"><b>IAN</b><small>FORCE<br/>MULTIPLIER</small></div><span className="node n1">DATA</span><span className="node n2">AI</span><span className="node n3">OPS</span><span className="node n4">GROWTH</span></div><div className="system-metrics"><div><span>OUTPUT</span><b>4.8×</b></div><div><span>FRICTION</span><b>−72%</b></div><div><span>VELOCITY</span><b>↑ 38%</b></div></div></div>
