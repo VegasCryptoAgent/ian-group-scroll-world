@@ -10,7 +10,7 @@ declare global {
 
 const sections = [
   {
-    id: "vision", label: "Vision", still: "/scroll-world/stills/01.png",
+    id: "vision", label: "Vision", still: "/scroll-world/stills/01.jpg",
     poster: "/scroll-world/stills/poster-01.jpg", posterMobile: "/scroll-world/stills/poster-01-m.jpg",
     clip: "/scroll-world/vid/leg-01.mp4", clipMobile: "/scroll-world/vid/leg-01-m.mp4",
     accent: "#6558F5", scroll: 1.85, linger: 0.32,
@@ -19,7 +19,7 @@ const sections = [
     tags: ["AI readiness", "Scale roadmap", "Executive clarity"]
   },
   {
-    id: "operations", label: "Intelligence", still: "/scroll-world/stills/02.png",
+    id: "operations", label: "Intelligence", still: "/scroll-world/stills/02.jpg",
     poster: "/scroll-world/stills/poster-02.jpg", posterMobile: "/scroll-world/stills/poster-02-m.jpg",
     clip: "/scroll-world/vid/leg-02.mp4", clipMobile: "/scroll-world/vid/leg-02-m.mp4",
     accent: "#63E6D3", scroll: 1.7, linger: 0.38,
@@ -28,7 +28,7 @@ const sections = [
     tags: ["AI agents", "Live signals", "Human approved"]
   },
   {
-    id: "growth", label: "Growth", still: "/scroll-world/stills/03.png",
+    id: "growth", label: "Growth", still: "/scroll-world/stills/03.jpg",
     poster: "/scroll-world/stills/poster-03.jpg", posterMobile: "/scroll-world/stills/poster-03-m.jpg",
     clip: "/scroll-world/vid/leg-03.mp4", clipMobile: "/scroll-world/vid/leg-03-m.mp4",
     accent: "#D8FF52", scroll: 1.65, linger: 0.32,
@@ -37,7 +37,7 @@ const sections = [
     tags: ["Founder visibility", "Distribution", "Demand systems"]
   },
   {
-    id: "scale", label: "Scale", still: "/scroll-world/stills/04.png",
+    id: "scale", label: "Scale", still: "/scroll-world/stills/04.jpg",
     poster: "/scroll-world/stills/poster-04.jpg", posterMobile: "/scroll-world/stills/poster-04-m.jpg",
     clip: "/scroll-world/vid/leg-04.mp4", clipMobile: "/scroll-world/vid/leg-04-m.mp4",
     accent: "#6558F5", scroll: 2.05, linger: 0.45,
