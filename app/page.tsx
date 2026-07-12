@@ -1,38 +1,87 @@
 "use client";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { GlobeScene } from "./GlobeScene";
 
-const products=[
-  {id:"01",tone:"dark",eyebrow:"IAN OPERATING SYSTEM",title:"Your company, with intelligence built in.",copy:"Connect fragmented data, decisions, and workflows into one living operating model—then give every team the context to move faster.",link:"/services/operational-leverage",label:"Explore AI systems"},
-  {id:"02",tone:"cream",eyebrow:"GROWTH SYSTEMS",title:"Turn expertise into attention that compounds.",copy:"Positioning, creative production, and distribution engineered as one repeatable growth system.",link:"/services/growth-leverage",label:"Explore growth systems"},
-  {id:"03",tone:"blue",eyebrow:"IAN ACCELERATOR",title:"Compress years of learning into months of execution.",copy:"Senior operators, strategic relationships, visibility, and capital readiness—focused on the constraint in front of you.",link:"/accelerator",label:"Explore the accelerator"}
+import { useEffect, useRef } from "react";
+
+declare global {
+  interface Window {
+    mountScrollWorld?: (node: HTMLElement, config: Record<string, unknown>) => void;
+  }
+}
+
+const sections = [
+  {
+    id: "vision", label: "Vision", still: "/scroll-world/stills/01.png",
+    poster: "/scroll-world/stills/poster-01.jpg", posterMobile: "/scroll-world/stills/poster-01-m.jpg",
+    clip: "/scroll-world/vid/leg-01.mp4", clipMobile: "/scroll-world/vid/leg-01-m.mp4",
+    accent: "#6558F5", scroll: 1.85, linger: 0.32,
+    eyebrow: "The first constraint", title: "See the company you could become.",
+    body: "IAN turns complexity into a clear path from today’s traction to tomorrow’s intelligent operating model.",
+    tags: ["AI readiness", "Scale roadmap", "Executive clarity"]
+  },
+  {
+    id: "operations", label: "Intelligence", still: "/scroll-world/stills/02.png",
+    poster: "/scroll-world/stills/poster-02.jpg", posterMobile: "/scroll-world/stills/poster-02-m.jpg",
+    clip: "/scroll-world/vid/leg-02.mp4", clipMobile: "/scroll-world/vid/leg-02-m.mp4",
+    accent: "#63E6D3", scroll: 1.7, linger: 0.38,
+    eyebrow: "Intelligent operations", title: "Make the business think together.",
+    body: "Connect data, decisions, and workflows into one living system that gives every team the context to move.",
+    tags: ["AI agents", "Live signals", "Human approved"]
+  },
+  {
+    id: "growth", label: "Growth", still: "/scroll-world/stills/03.png",
+    poster: "/scroll-world/stills/poster-03.jpg", posterMobile: "/scroll-world/stills/poster-03-m.jpg",
+    clip: "/scroll-world/vid/leg-03.mp4", clipMobile: "/scroll-world/vid/leg-03-m.mp4",
+    accent: "#D8FF52", scroll: 1.65, linger: 0.32,
+    eyebrow: "Compounding attention", title: "Turn expertise into momentum.",
+    body: "One sharp insight becomes a repeatable system for creative production, distribution, authority, and demand.",
+    tags: ["Founder visibility", "Distribution", "Demand systems"]
+  },
+  {
+    id: "scale", label: "Scale", still: "/scroll-world/stills/04.png",
+    poster: "/scroll-world/stills/poster-04.jpg", posterMobile: "/scroll-world/stills/poster-04-m.jpg",
+    clip: "/scroll-world/vid/leg-04.mp4", clipMobile: "/scroll-world/vid/leg-04-m.mp4",
+    accent: "#6558F5", scroll: 2.05, linger: 0.45,
+    eyebrow: "The force multiplier", title: "Turn traction into intelligent scale.",
+    body: "Build the company behind the growth—with strategy, AI, operations, and execution moving as one.",
+    tags: ["Operating leverage", "Growth leverage", "Venture leverage"],
+    cta: { primary: { label: "Build your scale roadmap", href: "/assessment" }, secondary: { label: "See client outcomes", href: "/case-studies" } }
+  }
 ];
-const stories=[
-  {metric:"+25%",label:"revenue in 90 days",tag:"Growth systems",quote:"A sharper story and a scalable demand engine turned momentum into measurable revenue."},
-  {metric:"10×",label:"return on AI tools",tag:"AI operations",quote:"Disconnected tools became an operating system the whole leadership team could actually use."},
-  {metric:"−40%",label:"operating cost",tag:"Workflow automation",quote:"High-friction work was redesigned around people, intelligence, and clear business outcomes."}
-];
-function Arrow(){return <span aria-hidden="true">↗</span>}
-function Header(){const[open,setOpen]=useState(false);return <header className="rp-header"><Link href="/" className="rp-logo"><i>IAN</i><span>GROUP</span></Link><nav className={open?"open":""}><Link href="#systems">Systems</Link><Link href="#results">Results</Link><Link href="/accelerator">Accelerator</Link><Link href="/insights">Insights</Link><Link href="/about">Company</Link></nav><div className="rp-head-actions"><Link href="/assessment" className="rp-pill">Start a conversation <Arrow/></Link><button aria-label="Toggle navigation" onClick={()=>setOpen(!open)}>{open?"×":"Menu"}</button></div></header>}
-function Console(){return <div className="rp-console"><div className="rp-console-top"><span><i/> IAN Intelligence</span><small>Live operating model</small><b>•••</b></div><div className="rp-console-grid"><aside><span className="active">Overview</span><span>Signals</span><span>Systems</span><span>Growth</span><span>Knowledge</span><small>AI READINESS</small><strong>82<em>/100</em></strong></aside><div className="rp-console-main"><header><div><small>GOOD MORNING, ALEX</small><b>Your company is moving faster.</b></div><button>+ New initiative</button></header><div className="rp-metrics"><article><small>OPERATING LEVERAGE</small><b>4.8×</b><em>↑ 38%</em></article><article><small>FOUNDER DEPENDENCY</small><b>27%</b><em>↓ 41%</em></article><article><small>BUSINESS VELOCITY</small><b>92</b><em>High</em></article></div><div className="rp-chart"><small>INTELLIGENT SCALE INDEX</small><b>+42.8%</b><svg viewBox="0 0 700 170" preserveAspectRatio="none"><defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#6d5cff" stopOpacity=".42"/><stop offset="1" stopColor="#6d5cff" stopOpacity="0"/></linearGradient></defs><path className="area" d="M0,145 C80,135 90,120 160,126 S260,95 330,105 S430,72 500,80 S600,42 700,18 L700,170 L0,170Z"/><path d="M0,145 C80,135 90,120 160,126 S260,95 330,105 S430,72 500,80 S600,42 700,18"/></svg></div></div></div></div>}
 
-export default function Home(){useEffect(()=>{const root=document.documentElement;let frame=0;const update=()=>{const hero=document.querySelector<HTMLElement>(".rp-hero");if(hero){const p=Math.max(0,Math.min(1,scrollY/(hero.offsetHeight-innerHeight)));root.style.setProperty("--hero-p",String(p));document.body.classList.toggle("rp-past-hero",scrollY>innerHeight*.9)}frame=0};const scroll=()=>{if(!frame)frame=requestAnimationFrame(update)};update();addEventListener("scroll",scroll,{passive:true});const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("rp-show")),{threshold:.12});document.querySelectorAll(".rp-reveal").forEach(e=>obs.observe(e));return()=>{removeEventListener("scroll",scroll);if(frame)cancelAnimationFrame(frame);obs.disconnect()}},[]);return <main className="rp-site"><Header/>
-  <section className="rp-hero"><div className="rp-hero-sticky"><div className="rp-aurora"><i/><i/><i/><div className="rp-globe"><GlobeScene/></div></div><div className="rp-hero-copy"><span className="rp-cap">IAN INTELLIGENCE</span><h1>Experience the future<br/>of intelligent business.</h1><p>IAN turns ambitious companies into intelligent operating systems—connecting strategy, AI, growth, and execution.</p><div><Link href="/assessment" className="rp-cta light">Build your scale roadmap <Arrow/></Link><Link href="#systems" className="rp-text-link">Explore IAN <span>↓</span></Link></div></div><div className="rp-scroll"><i/><span>Scroll to enter</span></div></div></section>
-
-  <section className="rp-intro rp-reveal"><span className="rp-label">IAN / THE FORCE MULTIPLIER</span><h2>Great companies do not need more software.<br/><em>They need every part of the business to think together.</em></h2><p>We redesign how your company operates, integrate AI where it creates measurable leverage, and build systems that get stronger with every signal.</p></section>
-
-  <section className="rp-products" id="systems"><div className="rp-section-head rp-reveal"><span className="rp-label">WHAT WE BUILD</span><h2>One partner.<br/>Three multipliers.</h2><p>From the first operating constraint to the systems behind your next stage of growth.</p></div><div className="rp-bento">{products.map((p,i)=><article className={`rp-product ${p.tone} rp-reveal`} key={p.id}><div className="rp-product-copy"><span>{p.id} / {p.eyebrow}</span><h3>{p.title}</h3><p>{p.copy}</p><Link href={p.link}>{p.label} <Arrow/></Link></div>{i===0?<div className="rp-product-visual"><Console/></div>:i===1?<div className="rp-growth-visual"><div className="rp-signal"><small>WEEKLY REACH</small><b>248.6K</b><em>+34.2%</em></div><div className="rp-wave">{[28,42,36,55,48,68,61,78,72,89,83,96].map((v,n)=><i key={n} style={{height:`${v}%`}}/>)}</div><div className="rp-post"><i>IAN</i><span>One insight.<br/><b>Every channel.</b></span><em>↗</em></div></div>:<div className="rp-roadmap"><span>YOUR SCALE ROADMAP</span>{["Foundation","Intelligence","Growth","Capital"].map((x,n)=><div key={x}><i>{n+1}</i><b>{x}</b><em>{n<2?"Complete":n===2?"Active":"Next"}</em></div>)}</div>}</article>)}</div></section>
-
-  <section className="rp-demo rp-reveal"><div className="rp-demo-head"><span className="rp-label">THE INTELLIGENT COMPANY</span><h2>See what changes when<br/>your business can think.</h2><button aria-label="Play film"><i>▶</i><span>Watch the film<small>2 min 14 sec</small></span></button></div><div className="rp-demo-stage"><div className="rp-demo-orbit"><GlobeScene/></div><span className="rp-floating f1">Signal detected <b>↗</b><small>Margin opportunity</small></span><span className="rp-floating f2">Agent active <b>●</b><small>Executive intelligence</small></span><span className="rp-floating f3">12.4 hrs <b>saved</b><small>This week</small></span><div className="rp-demo-title"><small>IAN OPERATING SYSTEM</small><b>One source of truth.<br/>Infinite leverage.</b></div></div></section>
-
-  <section className="rp-stories" id="results"><div className="rp-section-head rp-reveal"><span className="rp-label">CLIENT OUTCOMES</span><h2>Movement you can measure.</h2><Link href="/case-studies">View all client stories <Arrow/></Link></div><div className="rp-story-grid">{stories.map((s,i)=><article className="rp-story rp-reveal" key={s.metric}><span>0{i+1} / {s.tag}</span><div><b>{s.metric}</b><small>{s.label}</small></div><p>“{s.quote}”</p><Link href="/case-studies">Read the story <Arrow/></Link></article>)}</div></section>
-
-  <section className="rp-method"><div className="rp-method-title rp-reveal"><span className="rp-label">THE IAN METHOD</span><h2>From constraint<br/>to compounding.</h2></div>{[["01","Diagnose","Find the constraint limiting the value of your traction."],["02","Design","Create the data, workflow, and AI blueprint around outcomes."],["03","Build","Deploy the system and give your team the context to run it."],["04","Multiply","Measure the lift, optimize adoption, and compound each signal."]].map(x=><article className="rp-method-row rp-reveal" key={x[0]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p><i>↗</i></article>)}</section>
-
-  <section className="rp-insights"><div className="rp-section-head rp-reveal"><span className="rp-label">IAN INTELLIGENCE</span><h2>Ideas for leaders<br/>building what’s next.</h2><Link href="/insights">Explore all insights <Arrow/></Link></div><div className="rp-insight-grid"><Link href="/insights" className="rp-insight feature rp-reveal"><div className="rp-editorial-art"><i>AI</i><span>×</span><b>OPERATIONS</b></div><span>FIELD NOTE / 8 MIN</span><h3>The intelligent company is not a technology strategy.</h3><p>It is a new operating model—one where people, systems, and context move as one.</p></Link><div>{["The hidden cost of founder dependency","Why most AI pilots never become operating leverage","Building a growth system that compounds"].map((x,i)=><Link href="/insights" className="rp-insight-row rp-reveal" key={x}><span>0{i+1}</span><div><small>{i===0?"OPERATIONS":i===1?"AI STRATEGY":"GROWTH"}</small><h3>{x}</h3></div><i>↗</i></Link>)}</div></div></section>
-
-  <section className="rp-marquee"><div>{["INTELLIGENCE","OPERATIONS","GROWTH","EXECUTION","INTELLIGENCE","OPERATIONS"].map((x,i)=><span key={i}>{x}<i>✦</i></span>)}</div></section>
-  <section className="rp-final"><div className="rp-final-orb"><GlobeScene/></div><div className="rp-reveal"><span className="rp-label">YOUR NEXT MOVE</span><h2>Turn what is working<br/>into what is possible.</h2><p>Start with a focused assessment of your operations, AI readiness, and highest-leverage opportunity.</p><Link href="/assessment" className="rp-cta dark">Get your AI scale assessment <Arrow/></Link></div></section>
-  <footer className="rp-footer"><div className="rp-foot-top"><Link href="/" className="rp-logo"><i>IAN</i><span>GROUP</span></Link><h2>Intelligence.<br/>Applied.</h2></div><div className="rp-foot-links"><div><b>Explore</b><Link href="#systems">Systems</Link><Link href="/case-studies">Results</Link><Link href="/insights">Insights</Link></div><div><b>Company</b><Link href="/about">About</Link><Link href="/accelerator">Accelerator</Link><Link href="/venture-studio">Venture studio</Link></div><div><b>Connect</b><Link href="/assessment">Start a conversation</Link><a href="mailto:hello@iangroup.ai">hello@iangroup.ai</a></div></div><div className="rp-foot-bottom"><span>© 2026 IAN GROUP</span><span>AI EXECUTION FOR COMPANIES WITH TRACTION</span><span>Privacy · Terms</span></div></footer>
-  </main>}
+export default function Home() {
+  const host = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let cancelled = false;
+    const mount = () => {
+      if (cancelled || !host.current || !window.mountScrollWorld || host.current.dataset.mounted) return;
+      host.current.dataset.mounted = "true";
+      window.mountScrollWorld(host.current, {
+        brand: { name: "IAN GROUP", href: "/" },
+        cta: { label: "Start a conversation", href: "/assessment" },
+        hint: "Scroll to enter intelligence", nav: true, atmosphere: true,
+        diveScroll: 1.7, connScroll: 0, crossfade: 0.14, scrollMobileFactor: 1.25,
+        sections, connectors: [], connectorsMobile: []
+      });
+    };
+    if (window.mountScrollWorld) mount();
+    else {
+      const script = document.createElement("script");
+      script.src = "/scroll-world/scrub-engine.js";
+      script.async = true;
+      script.onload = mount;
+      document.body.appendChild(script);
+    }
+    return () => { cancelled = true; };
+  }, []);
+  return <main className="ian-world-shell">
+    <div id="ian-scroll-world" ref={host} className="ian-scroll-world">
+      <div data-sw-seo>
+        <h1>Turn traction into intelligent scale.</h1>
+        <section><h2>See the company you could become.</h2><p>IAN turns complexity into a clear path from today’s traction to tomorrow’s intelligent operating model.</p></section>
+        <section><h2>Make the business think together.</h2><p>Connect data, decisions, and workflows into one living system that gives every team the context to move.</p></section>
+        <section><h2>Turn expertise into momentum.</h2><p>Build a repeatable system for creative production, distribution, authority, and demand.</p></section>
+        <section><h2>Turn traction into intelligent scale.</h2><p>Build the company behind the growth with strategy, AI, operations, and execution moving as one.</p><a href="/assessment">Build your scale roadmap</a></section>
+      </div>
+    </div>
+  </main>;
+}
